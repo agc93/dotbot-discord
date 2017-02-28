@@ -26,7 +26,7 @@ Setup(context =>
 Task("Clean")
     .Does(() =>
 {
-    CleanDirectory("./.artifacts");
+    CleanDirectory("./artifacts");
 });
 
 Task("Restore")
@@ -64,7 +64,7 @@ Task("Pack")
         DotNetCorePack(project.FullPath, new DotNetCorePackSettings 
         {
             Configuration = config,
-            OutputDirectory = "./.artifacts",
+            OutputDirectory = "./artifacts",
             VersionSuffix = version.Suffix,
             NoBuild = true,
             Verbose = false,
