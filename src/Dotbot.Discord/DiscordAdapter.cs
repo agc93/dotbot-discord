@@ -30,13 +30,17 @@ namespace Dotbot.Discord
             _log.Information("Connected to Discord.");
             _broker.Client.MessageReceived += (sender, args) =>
             {
-                _log.Verbose("Discord: Message received, adding event to queue.");
-                _queue.Enqueue(new MessageEvent(_broker)
+                if (args.User.Name != client.Bot.DisplayName)
                 {
-                    Bot = client.Bot,
-                    Message = new Dotbot.Models.Message {Text = args.Message.Text, User = args.User.ToBotUser()},
-                    Room = args.Channel.ToRoom()
-                });
+                    _queue.Enqueue(new MessageEvent(_broker)
+                    {
+                        Bot = client.Bot,
+                        Message = new Dotbot.Models.Message { Text = args.Message.Text, User = args.User.ToBotUser() },
+                        Room = args.Channel.ToRoom()
+                    });
+                    _log.Verbose("Discord: Message received, adding event to queue.");
+                }
+                
             };
             _log.Verbose("Discord: Adapter started, listening for messages.");
             token.WaitHandle.WaitOne(Timeout.Infinite);
