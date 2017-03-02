@@ -8,9 +8,9 @@ namespace Dotbot.Discord
 {
     public static class DiscordExtensions
     {
-        public static Dotbot.Models.User ToBotUser(this User user)
+        public static Models.User ToBotUser(this User user)
         {
-            return new Dotbot.Models.User
+            return new Models.User
             {
                 Id = user.Id.ToString(),
                 Username = user.Nickname,
@@ -18,13 +18,16 @@ namespace Dotbot.Discord
             };
         }
 
-        public static Dotbot.Models.User ToBotUser(this Profile profile) {
-            return new Dotbot.Models.User {
+        public static Models.User ToBotUser(this Profile profile)
+        {
+            return new Models.User
+            {
                 Id = profile.Id.ToString(),
                 Username = profile.Email,
                 DisplayName = profile.Name
             };
         }
+
         public static LogLevel ToLogLevel(this LogSeverity severity)
         {
             switch (severity)
@@ -44,8 +47,10 @@ namespace Dotbot.Discord
             }
         }
 
-        public static Dotbot.Models.Room ToRoom(this Channel channel) {
-            return new Dotbot.Models.Room {
+        public static Models.Room ToRoom(this Channel channel)
+        {
+            return new Models.Room
+            {
                 Id = channel.Id.ToString(),
                 Name = channel.Name
             };

@@ -7,7 +7,8 @@ namespace Dotbot.Discord
             Bot = user;
             IsValid = isValid;
         }
-        public bool IsValid {get;}
-        public Dotbot.Models.User Bot {get;}
+
+        public bool IsValid { get; }
+        public Dotbot.Models.User Bot { get; }
     }
 }
