@@ -31,9 +31,7 @@ namespace Dotbot.Discord
                     Room = args.Channel.ToRoom()
                 });
             };
-            while (!token.IsCancellationRequested && !_broker.Client.CancelToken.IsCancellationRequested) {
-                // wait
-            }
+            token.WaitHandle.WaitOne(Timeout.Infinite);
             return true;
         }
     }
