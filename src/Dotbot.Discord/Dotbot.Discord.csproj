@@ -4,9 +4,18 @@
     <TargetFramework>netstandard1.6</TargetFramework>
     <DebugType>portable</DebugType>
     <AssemblyName>Dotbot.Discord</AssemblyName>
-    <PackageId>Dotbot.Discord</PackageId>
-    <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wpa81+wp8</PackageTargetFallback>
     <NetStandardImplicitPackageVersion>1.6.1</NetStandardImplicitPackageVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>Dotbot.Discord</PackageId>
+    <PackageProjectUrl>https://github.com/botnetframework/dotbot-discord/</PackageProjectUrl>
+    <PackageTags>bot;dotbot;discord;chat;dotbot-adapter;</PackageTags>
+    <PackageLicenseUrl>https://github.com/botnetframework/dotbot-discord/raw/develop/LICENSE</PackageLicenseUrl>
+    <Description>An adapter for the Dotbot framework (https://github.com/botnetcore/dotbot) for Discord. Powered by Discord.Net by 'RogueException'.</Description>
+    <RepositoryUrl>https://github.com/botnetframework/dotbot-discord/</RepositoryUrl>
+    <Authors>Alistair Chapman</Authors>
+    <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wpa81+wp8</PackageTargetFallback>
   </PropertyGroup>
 
   <ItemGroup>
