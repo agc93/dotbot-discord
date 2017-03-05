@@ -75,6 +75,33 @@ Task("Pack")
     }
 });
 
+Task("Publish")
+    .WithCriteria(isRunningOnAppVeyor && !isPullRequest)
+    .IsDependentOn("Pack")
+    .Does(() =>
+{
+    var apiKey = EnvironmentVariable("NUGET_API_KEY");
+    if(string.IsNullOrWhiteSpace(apiKey))
+    {
+        throw new CakeException("NuGet API key was not provided.");
+    }
+
+    // Get the file paths.
+    var packageVersion = version.GetSemanticVersion();
+    var files = GetFiles("./.artifacts/*." + packageVersion + ".nupkg");
+
+    foreach(var file in files) 
+    {
+        NuGetPush(file, new NuGetPushSettings() {
+            Source = "https://nuget.org/api/v2/package",
+            ApiKey = apiKey
+        });
+    }
+});
+
+Task("AppVeyor")
+    .IsDependentOn("Publish");
+
 Task("Default")
     .IsDependentOn("Pack");
 

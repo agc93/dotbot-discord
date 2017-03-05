@@ -10,22 +10,12 @@ namespace Dotbot.Discord
     {
         public static Models.User ToBotUser(this User user)
         {
-            return new Models.User
-            {
-                Id = user.Id.ToString(),
-                Username = user.Nickname,
-                DisplayName = user.Name
-            };
+            return new Models.User(user.Id.ToString(), user.Nickname, user.Name);
         }
 
         public static Models.User ToBotUser(this Profile profile)
         {
-            return new Models.User
-            {
-                Id = profile.Id.ToString(),
-                Username = profile.Email,
-                DisplayName = profile.Name
-            };
+            return new Models.User(profile.Id.ToString(), profile.Email, profile.Name);
         }
 
         public static LogLevel ToLogLevel(this LogSeverity severity)
@@ -49,11 +39,7 @@ namespace Dotbot.Discord
 
         public static Models.Room ToRoom(this Channel channel)
         {
-            return new Models.Room
-            {
-                Id = channel.Id.ToString(),
-                Name = channel.Name
-            };
+            return new Models.Room(channel.Id.ToString(), channel.Name);
         }
     }
 }
